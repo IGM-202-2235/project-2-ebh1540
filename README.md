@@ -11,49 +11,38 @@ _REPLACE OR REMOVE EVERYTING BETWEEN "\_"_
 
 ## Simulation Design
 
-_A brief explanation of your simulation._
+I plan for my simulation to be a few kinds of fish (taken from the sprites in the source). Each of them will interact differently. This is subject to change, but my current idea is for one type to avoid another, one type to seek out food (player controls), and one type to school (cohesion) though this one I think will probably need another behavior.
 
 ### Controls
 
--   _List all of the actions the player can have in your simulation_
-    -   _Include how to preform each action ( keyboard, mouse, UI Input )_
-    -   _Include what impact an action has in the simulation ( if is could be unclear )_
+- The player will be able to point with the mouse and click drop a piece of food for the food oriented group to seek out.
 
-## _Agent 1 Name_
+## Avoidant
 
-_A brief explanation of this agent._
+Large amounts of other fish make this species nervous. It will flee the center of the school of the schooling fish type.
 
 #### Steering Behaviors
 
-- _List all behaviors used by this agent_
-   - _If a behavior has input data list it here_
-   - _eg, Flee - nearest Agent2_
-- Obstacles - _List all obstacle types this state avoids_
-- Seperation - _List all agents this state seperates from_
+- Flee - the center of the school of schooling fish
+- Separation - All other avoidant type fish 
 
-## _Agent 2 Name_
+## Schooling
 
-_A brief explanation of this agent._
+The schooling fish stick together because of strength in numbers.
 
 #### Steering Behaviors
 
-- _List all behaviors used by this agent_
-   - _If a behavior has input data list it here_
-   - _eg, Flee - nearest Agent2_
-- Obstacles - _List all obstacle types this state avoids_
-- Seperation - _List all agents this state seperates from_
+- Cohesion - These fish will seek out the centerpoint of all of their friends
+- Seek - The school will also be a little food motivated to make their movement more dynamic, but it'll be lower priority than staying in the school
 
-## _Agent 3 Name_
+## Food Motivated
 
-_A brief explanation of this agent._
+These fish just wanna eat.
 
 #### Steering Behaviors
 
-- _List all behaviors used by this agent_
-   - _If a behavior has input data list it here_
-   - _eg, Flee - nearest Agent2_
-- Obstacles - _List all obstacle types this state avoids_
-- Seperation - _List all agents this state seperates from_
+- Seek - The food that the player places. Otherwise, this fish will just wander
+- Seperation - Separate from all other food motivated fish
 
 ## Sources
 
@@ -61,9 +50,8 @@ _A brief explanation of this agent._
 
 ## Make it Your Own
 
-- _List out what you added to your game to make it different for you_
-- _If you will add more agents or states make sure to list here and add it to the documention above_
-- _If you will add your own assets make sure to list it here and add it to the Sources section
+- I'm not entirely sure how I'll differentiate yet, but I'm hoping to add more behaviors than just the ones listed.
+- Inspired by the example in the project writeup, the food motivated fish will likely slow down the longer they've gone without eating. This could be collective or based on the actual fish, I'll have to balance how many food motivated fish spawn with how easy it is to keep them fed.
 
 ## Known Issues
 
