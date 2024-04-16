@@ -23,74 +23,41 @@ _A brief explanation of your simulation._
 
 _A brief explanation of this agent._
 
-### _State 1 Name_
-
-**Objective:** _A brief explanation of this state's objective._
-
 #### Steering Behaviors
 
-- _List all behaviors used by this state_
-   - _If behavior has input data list it here_
+- _List all behaviors used by this agent_
+   - _If a behavior has input data list it here_
    - _eg, Flee - nearest Agent2_
 - Obstacles - _List all obstacle types this state avoids_
 - Seperation - _List all agents this state seperates from_
-   
-#### State Transistions
-
-- _List all the ways this agent can transition to this state_
-   - _eg, When this agent gets within range of Agent2_
-   - _eg, When this agent has reached target of State2_
-   
-### _State 2 Name_
-
-**Objective:** _A brief explanation of this state's objective._
-
-#### Steering Behaviors
-
-- _List all behaviors used by this state_
-- Obstacles - _List all obstacle types this state avoids_
-- Seperation - _List all agents this state seperates from_
-   
-#### State Transistions
-
-- _List all the ways this agent can transition to this state_
 
 ## _Agent 2 Name_
 
 _A brief explanation of this agent._
 
-### _State 1 Name_
+#### Steering Behaviors
 
-**Objective:** _A brief explanation of this state's objective._
+- _List all behaviors used by this agent_
+   - _If a behavior has input data list it here_
+   - _eg, Flee - nearest Agent2_
+- Obstacles - _List all obstacle types this state avoids_
+- Seperation - _List all agents this state seperates from_
+
+## _Agent 3 Name_
+
+_A brief explanation of this agent._
 
 #### Steering Behaviors
 
-- _List all behaviors used by this state_
+- _List all behaviors used by this agent_
+   - _If a behavior has input data list it here_
+   - _eg, Flee - nearest Agent2_
 - Obstacles - _List all obstacle types this state avoids_
 - Seperation - _List all agents this state seperates from_
-   
-#### State Transistions
-
-- _List all the ways this agent can transition to this state_
-   
-### _State 2 Name_
-
-**Objective:** _A brief explanation of this state's objective._
-
-#### Steering Behaviors
-
-- _List all behaviors used by this state_
-- Obstacles - _List all obstacle types this state avoids_
-- Seperation - _List all agents this state seperates from_
-   
-#### State Transistions
-
-- _List all the ways this agent can transition to this state_
 
 ## Sources
 
--   _List all project sources here –models, textures, sound clips, assets, etc._
--   _If an asset is from the Unity store, include a link to the page and the author’s name_
+- Fish sprites: [https://agdawkwardgamedev.itch.io/free-fish-assets](https://agdawkwardgamedev.itch.io/free-fish-assets)
 
 ## Make it Your Own
 
