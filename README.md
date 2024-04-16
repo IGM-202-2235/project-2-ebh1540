@@ -34,6 +34,7 @@ The schooling fish stick together because of strength in numbers.
 
 - Cohesion - These fish will seek out the centerpoint of all of their friends
 - Seek - The school will also be a little food motivated to make their movement more dynamic, but it'll be lower priority than staying in the school
+- Separation - These fish won't separate since they'll be cohering.
 
 ## Food Motivated
 
@@ -42,7 +43,7 @@ These fish just wanna eat.
 #### Steering Behaviors
 
 - Seek - The food that the player places. Otherwise, this fish will just wander
-- Seperation - Separate from all other food motivated fish
+- Separation - Separate from all other food motivated fish
 
 ## Sources
 
