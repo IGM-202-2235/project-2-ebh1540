@@ -13,6 +13,8 @@ public abstract class Agent : MonoBehaviour
     [SerializeField]
     protected float futureTime = 1f;
 
+
+
     protected Vector3 totalForces = Vector3.zero;
 
     public PhysicsObject PhysicsObject {get {return physicsObject;}}
@@ -21,11 +23,14 @@ public abstract class Agent : MonoBehaviour
 
     public float Radius { get {return radius;}}
 
+    protected List<Vector3> foundObstaclePositions = new List<Vector3>();
+
 
     // Start is called before the first frame update
     void Start()
     {
         radius = gameObject.GetComponent<SpriteRenderer>().bounds.extents.x;
+        foundObstaclePositions.Clear();
     }
 
     // Update is called once per frame
@@ -132,12 +137,48 @@ public abstract class Agent : MonoBehaviour
         return steeringForce;
     }
 
+    public Vector3 AvoidObstacles(){
+        Vector3 steeringForce = Vector3.zero;
+        foundObstaclePositions.Clear();
+        float forwardDot, rightDot;
+        Vector3 vToO = Vector3.zero;
+        foreach(Obstacle obstacle in AgentManager.Instance.obstacles){
+            vToO = obstacle.transform.position - transform.position;
+            forwardDot = Vector3.Dot(physicsObject.Direction, vToO);
+
+            if(forwardDot > 0f){
+                foundObstaclePositions.Add(obstacle.transform.position);
+            }
+        }
+
+
+
+
+        return steeringForce;
+    }
 
 
     private void OnDrawGizmos(){
-        Gizmos.color = Color.yellow;
+        Gizmos.color = Color.green;
 
         Gizmos.DrawSphere(transform.position, radius);
+
+        Gizmos.color = Color.yellow;
+
+        foreach(Vector3 pos in foundObstaclePositions){
+            Gizmos.DrawLine(transform.position, pos);
+        }
+
+    
+        Vector3 boxSize = Vector3.one;
+        Vector3 boxCenter = Vector3.zero;
+        
+
+
+
+        Gizmos.matrix = transform.localToWorldMatrix;
+        Gizmos.DrawWireCube(boxCenter, boxSize);
+        Gizmos.matrix = Matrix4x4.identity;
     }
 
 }

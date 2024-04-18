@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Wanderer : Agent
 {
@@ -23,6 +24,8 @@ public class Wanderer : Agent
         futureTime = wanderTime;
         Vector3 boundsForce = StayInBounds();
         totalForce += boundsForce * boundsWeight;
+
+        AvoidObstacles();
         
         // don't spend time calculating all the distances and vectors if we're not gonna separate
         if(separate){
@@ -48,5 +51,30 @@ public class Wanderer : Agent
         wanderTarget.y += Mathf.Sin(randAngle) * wanderRadius;
 
         Gizmos.DrawLine(transform.position, wanderTarget);
+
+
+        Gizmos.color = Color.yellow;
+
+        foreach(Vector3 pos in foundObstaclePositions){
+            Gizmos.DrawLine(transform.position, pos);
+        }
+
+//
+        //  Draw safe space box
+        //
+        Gizmos.color = Color.green;
+        Vector3 futurePos = GetFuturePosition(wanderTime);
+
+        float length = Vector3.Distance(transform.position, futurePos) + physicsObject.radius;
+
+
+        Vector3 boxSize = new Vector3(physicsObject.radius * 2f, length, 1f);
+        Vector3 boxCenter = Vector3.zero;
+        boxCenter.y += length / 2f;
+
+        Gizmos.matrix = transform.localToWorldMatrix;
+        Gizmos.DrawWireCube(boxCenter, boxSize);
+        Gizmos.matrix = Matrix4x4.identity;
+
     }
 }

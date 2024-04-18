@@ -11,6 +11,8 @@ public class AgentManager : Singleton<AgentManager>
     [SerializeField]
     int spawnCount = 100;
 
+    public List<Obstacle> obstacles = new List<Obstacle>();
+
     public List<Agent> agents = new List<Agent>();
 
     Vector2 screenSize = Vector2.zero;
@@ -25,7 +27,7 @@ public class AgentManager : Singleton<AgentManager>
         screenSize.y = Camera.main.orthographicSize;
         screenSize.x = screenSize.y * Camera.main.aspect;
 
-        Spawn();
+        // Spawn();
     }
 
     void Spawn()

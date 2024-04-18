@@ -17,6 +17,8 @@ public class PhysicsObject : MonoBehaviour
 
     public Vector3 Velocity { get { return velocity; } }
 
+    public Vector3 Direction { get { return direction; } }
+
     Vector3 acceleration;
 
     [SerializeField]
@@ -38,6 +40,8 @@ public class PhysicsObject : MonoBehaviour
 
     public float speed; // just so i can see velocity magnitude in the editor
 
+    public float radius;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,6 +52,7 @@ public class PhysicsObject : MonoBehaviour
         bottomBound = size.y;
         position = transform.position;  
         speed = 0; 
+        radius = gameObject.GetComponent<SpriteRenderer>().bounds.extents.x;
     }
 
     // Update is called once per frame
