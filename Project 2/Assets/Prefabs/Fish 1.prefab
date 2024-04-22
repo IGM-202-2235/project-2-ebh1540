@@ -27,13 +27,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1409827650648115021}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 1.41, y: -0.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!212 &3595647416580242136
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -100,10 +100,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   physicsObject: {fileID: 3966854493132694311}
   futureTime: 1
+  obstacleStrength: 2
   wanderTime: 1
   wanderRadius: 1
   wanderWeight: 1
-  boundsWeight: 2
+  boundsWeight: 3
   separateWeight: 1.5
   separate: 1
   sepForce: 0
@@ -126,3 +127,4 @@ MonoBehaviour:
   gravityStrength: 9.8
   maxSpeed: 10
   speed: 0
+  radius: 0

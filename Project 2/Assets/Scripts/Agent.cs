@@ -13,8 +13,9 @@ public abstract class Agent : MonoBehaviour
     [SerializeField]
     protected float futureTime = 1f;
 
-
-
+    [SerializeField]
+    protected float obstacleStrength = 1f;
+    
     protected Vector3 totalForces = Vector3.zero;
 
     public PhysicsObject PhysicsObject {get {return physicsObject;}}
@@ -146,15 +147,26 @@ public abstract class Agent : MonoBehaviour
             vToO = obstacle.transform.position - transform.position;
             forwardDot = Vector3.Dot(physicsObject.Direction, vToO);
 
-            if(forwardDot > 0f){
-                foundObstaclePositions.Add(obstacle.transform.position);
+            if(forwardDot > 0f && vToO.magnitude < physicsObject.Velocity.magnitude * futureTime){
+                rightDot = Vector3.Dot(vToO, Vector3.right);
+                if(rightDot > radius + obstacle.radius){
+                    foundObstaclePositions.Add(obstacle.transform.position);
+                }
             }
+        }
+
+        foreach(Vector3 pos in foundObstaclePositions){
+            vToO = pos - transform.position;
+            rightDot = Vector3.Dot(vToO, Vector3.right);
+            Vector3 desiredVelocity = physicsObject.maxSpeed * (rightDot > 0 ? Vector3.right : Vector3.left);
+            Vector3 avoidForce = desiredVelocity - physicsObject.Velocity;
+            steeringForce += avoidForce / vToO.magnitude;
         }
 
 
 
 
-        return steeringForce;
+        return steeringForce * obstacleStrength;
     }
 
 

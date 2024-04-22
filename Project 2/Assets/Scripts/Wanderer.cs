@@ -25,7 +25,7 @@ public class Wanderer : Agent
         Vector3 boundsForce = StayInBounds();
         totalForce += boundsForce * boundsWeight;
 
-        AvoidObstacles();
+        totalForce += AvoidObstacles();
         
         // don't spend time calculating all the distances and vectors if we're not gonna separate
         if(separate){
