@@ -146,10 +146,11 @@ public abstract class Agent : MonoBehaviour
         foreach(Obstacle obstacle in AgentManager.Instance.obstacles){
             vToO = obstacle.transform.position - transform.position;
             forwardDot = Vector3.Dot(physicsObject.Direction, vToO);
-
-            if(forwardDot > 0f && vToO.magnitude < physicsObject.Velocity.magnitude * futureTime){
-                rightDot = Vector3.Dot(vToO, Vector3.right);
-                if(rightDot > radius + obstacle.radius){
+            float length = Vector3.Distance(transform.position, GetFuturePosition(futureTime)) + physicsObject.radius;
+            if(forwardDot > 0f && forwardDot < length){
+                rightDot = Vector3.Dot(vToO, transform.right);
+                if(Math.Abs(rightDot) < radius + obstacle.radius){
+                    Debug.Log("Obstacle found: forward dot " + forwardDot + " right dot " + rightDot);
                     foundObstaclePositions.Add(obstacle.transform.position);
                 }
             }
@@ -157,8 +158,8 @@ public abstract class Agent : MonoBehaviour
 
         foreach(Vector3 pos in foundObstaclePositions){
             vToO = pos - transform.position;
-            rightDot = Vector3.Dot(vToO, Vector3.right);
-            Vector3 desiredVelocity = physicsObject.maxSpeed * (rightDot > 0 ? Vector3.right : Vector3.left);
+            rightDot = Vector3.Dot(vToO, transform.right);
+            Vector3 desiredVelocity = physicsObject.maxSpeed * (rightDot < 0 ? transform.right : transform.right * -1);
             Vector3 avoidForce = desiredVelocity - physicsObject.Velocity;
             steeringForce += avoidForce / vToO.magnitude;
         }

@@ -348,6 +348,10 @@ PrefabInstance:
       propertyPath: obstacles.Array.data[0]
       value: 
       objectReference: {fileID: 42093925}
+    - target: {fileID: 3966854493132694311, guid: 78f0994fa1723fb44b85a1acc1a8bfbb, type: 3}
+      propertyPath: radius
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4636409936049795813, guid: 78f0994fa1723fb44b85a1acc1a8bfbb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.41
