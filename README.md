@@ -48,6 +48,7 @@ These fish just wanna eat.
 ## Sources
 
 - Fish sprites: [https://agdawkwardgamedev.itch.io/free-fish-assets](https://agdawkwardgamedev.itch.io/free-fish-assets)
+- Rocks: [https://freegameassets.blogspot.com/2013/09/asteroids-and-planets-if-you-needed-to.html](https://freegameassets.blogspot.com/2013/09/asteroids-and-planets-if-you-needed-to.html)
 
 ## Make it Your Own
 
