@@ -49,6 +49,7 @@ These fish just wanna eat.
 
 - Fish sprites: [https://agdawkwardgamedev.itch.io/free-fish-assets](https://agdawkwardgamedev.itch.io/free-fish-assets)
 - Rocks: [https://freegameassets.blogspot.com/2013/09/asteroids-and-planets-if-you-needed-to.html](https://freegameassets.blogspot.com/2013/09/asteroids-and-planets-if-you-needed-to.html)
+- Food (I thought the cheese was funny): [https://freegameassets.blogspot.com/2013/08/blog-post_30.html](https://freegameassets.blogspot.com/2013/08/blog-post_30.html)
 
 ## Make it Your Own
 
