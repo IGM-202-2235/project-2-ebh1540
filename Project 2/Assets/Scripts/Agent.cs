@@ -12,9 +12,6 @@ public abstract class Agent : MonoBehaviour
 
     [SerializeField]
     protected float futureTime = 1f;
-
-    [SerializeField]
-    protected float obstacleStrength = 1f;
     
     protected Vector3 totalForces = Vector3.zero;
 
@@ -28,7 +25,7 @@ public abstract class Agent : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         radius = gameObject.GetComponent<SpriteRenderer>().bounds.extents.x;
         foundObstaclePositions.Clear();
@@ -150,7 +147,7 @@ public abstract class Agent : MonoBehaviour
             if(forwardDot > 0f && forwardDot < length){
                 rightDot = Vector3.Dot(vToO, transform.right);
                 if(Math.Abs(rightDot) < radius + obstacle.radius){
-                    Debug.Log("Obstacle found: forward dot " + forwardDot + " right dot " + rightDot);
+                    // Debug.Log("Obstacle found: forward dot " + forwardDot + " right dot " + rightDot);
                     foundObstaclePositions.Add(obstacle.transform.position);
                 }
             }
@@ -167,7 +164,16 @@ public abstract class Agent : MonoBehaviour
 
 
 
-        return steeringForce * obstacleStrength;
+        return steeringForce;
+    }
+
+    public Vector3 SeekFood(){
+        Vector3 steeringForce = Vector3.zero;
+        foreach(Food food in AgentManager.Instance.foodList){
+            steeringForce += Seek(food.transform.position) / (food.transform.position - transform.position).magnitude;
+        }
+
+        return steeringForce;
     }
 
 

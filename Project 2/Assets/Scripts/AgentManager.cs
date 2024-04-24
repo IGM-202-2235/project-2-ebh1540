@@ -6,7 +6,18 @@ public class AgentManager : Singleton<AgentManager>
 {
 
     [SerializeField]
-    Agent agentPref;
+    FoodMotivated foodMotivatedPref;
+
+    [SerializeField]
+    Obstacle obstaclePref;
+
+    [SerializeField]
+    Food foodPref;
+
+    List<Agent> AgentPrefabs = new List<Agent>();
+
+    [SerializeField]
+    int minRocks, maxRocks;
 
     [SerializeField]
     int spawnCount = 100;
@@ -14,6 +25,10 @@ public class AgentManager : Singleton<AgentManager>
     public List<Obstacle> obstacles = new List<Obstacle>();
 
     public List<Agent> agents = new List<Agent>();
+
+    public List<FoodMotivated> foodMotivateds = new List<FoodMotivated>();
+
+    public List<Food> foodList = new List<Food>();
 
     Vector2 screenSize = Vector2.zero;
 
@@ -27,15 +42,40 @@ public class AgentManager : Singleton<AgentManager>
         screenSize.y = Camera.main.orthographicSize;
         screenSize.x = screenSize.y * Camera.main.aspect;
 
-        // Spawn();
+        AgentPrefabs.Add(foodMotivatedPref);
+
+        Spawn();
+        SpawnRocks();
     }
 
     void Spawn()
     {
         for (int i = 0; i < spawnCount; i++)
         {
-            agents.Add(Instantiate(agentPref, PickRandomPoint(), Quaternion.identity));
+            if(Random.Range(0, AgentPrefabs.Count) == 0){
+                FoodMotivated newFish = Instantiate(foodMotivatedPref, PickRandomPoint(), Quaternion.identity);
+                agents.Add(newFish);
+                foodMotivateds.Add(newFish);
+            }
         }
+    }
+
+    void SpawnRocks(){
+        int rocksToSpawn = Random.Range(minRocks, maxRocks);
+        for (int i = 0; i < rocksToSpawn; i++){
+            obstacles.Add(Instantiate(obstaclePref, PickRandomPoint(), Quaternion.identity));
+        }
+    }
+
+    public void SpawnFood(Vector3 position){
+        position.z = 0;
+        foodList.Add(Instantiate(foodPref, position, Quaternion.identity));
+    }
+
+    public void eatFood(Food food, FoodMotivated eater){
+        foodList.Remove(food);
+        Destroy(food.gameObject);
+        eater.resetFoodWeight();
     }
 
     Vector2 PickRandomPoint()

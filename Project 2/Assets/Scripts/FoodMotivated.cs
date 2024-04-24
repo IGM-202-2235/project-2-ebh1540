@@ -1,21 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class Wanderer : Agent
+public class FoodMotivated : Agent
 {
      [SerializeField]
     float wanderTime = 1f, wanderRadius = 1f;
 
     [SerializeField]
-    float wanderWeight = 1f, boundsWeight = 1f, separateWeight = 1f;
+    float wanderWeight = 1f, boundsWeight = 1f, separateWeight = 1f, obstacleWeight = 1f, foodWeight = 1f;
 
     [SerializeField]
     bool separate = true;
     
     public float sepForce = 0;
-
     
     protected override Vector3 CalculateSteeringForces(){
         Vector3 totalForce = Vector3.zero;
@@ -25,7 +25,7 @@ public class Wanderer : Agent
         Vector3 boundsForce = StayInBounds();
         totalForce += boundsForce * boundsWeight;
 
-        totalForce += AvoidObstacles();
+        totalForce += AvoidObstacles() * obstacleWeight;
         
         // don't spend time calculating all the distances and vectors if we're not gonna separate
         if(separate){
@@ -33,7 +33,16 @@ public class Wanderer : Agent
             totalForce += separateForce * separateWeight;
             sepForce = (separateForce * separateWeight).magnitude;
         }
+
+        totalForce += SeekFood() * foodWeight;
+
+        foodWeight += Time.deltaTime * 0.1f; // The longer these guys go without eating, the stronger their desire to eat gets
+        
         return totalForce;
+    }
+
+    public void resetFoodWeight(){
+        foodWeight = 0; // When they've eaten, they don't get hungry again for a bit so their food motivation goes away
     }
 
     private void OnDrawGizmos(){
