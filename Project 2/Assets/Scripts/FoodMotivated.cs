@@ -34,7 +34,7 @@ public class FoodMotivated : Agent
             sepForce = (separateForce * separateWeight).magnitude;
         }
 
-        totalForce += SeekFood() * foodWeight;
+        totalForce += SeekClosestFood() * foodWeight;
 
         foodWeight += Time.deltaTime * 0.1f; // The longer these guys go without eating, the stronger their desire to eat gets
         

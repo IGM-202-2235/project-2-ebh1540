@@ -25,7 +25,7 @@ public abstract class Agent : MonoBehaviour
 
 
     // Start is called before the first frame update
-    protected void Start()
+    void Start()
     {
         radius = gameObject.GetComponent<SpriteRenderer>().bounds.extents.x;
         foundObstaclePositions.Clear();
@@ -171,6 +171,24 @@ public abstract class Agent : MonoBehaviour
         Vector3 steeringForce = Vector3.zero;
         foreach(Food food in AgentManager.Instance.foodList){
             steeringForce += Seek(food.transform.position) / (food.transform.position - transform.position).magnitude;
+        }
+
+        return steeringForce;
+    }
+
+    public Vector3 SeekClosestFood(){
+        Vector3 steeringForce = Vector3.zero;
+        if(AgentManager.Instance.foodList.Count > 0){
+            Food toSeek = AgentManager.Instance.foodList[0];
+            float minDistance = 1000f;
+            foreach(Food food in AgentManager.Instance.foodList){
+                Vector3 fishToFood = food.transform.position - transform.position;
+                if(fishToFood.magnitude < minDistance){
+                    minDistance = fishToFood.magnitude;
+                    toSeek = food;
+                }
+            }
+            steeringForce = Seek(toSeek.transform.position);
         }
 
         return steeringForce;
