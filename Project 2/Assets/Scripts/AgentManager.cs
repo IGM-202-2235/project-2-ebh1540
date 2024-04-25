@@ -73,8 +73,6 @@ public class AgentManager : Singleton<AgentManager>
             SpawnHungry(); // guarantee that there's at least one hungry fish at all times, more can spawn by eating but they die by starving
         }
         schoolingPoint = calcSchoolingPoint();
-    
-        Debug.Log("Framerate: " + (1 / Time.deltaTime));
     }
 
     void Spawn()
