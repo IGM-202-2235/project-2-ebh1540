@@ -16,6 +16,7 @@ My simulation contains a few kinds of fish that all interact with each other and
 ### Controls
 
 - The player will be able to point with the mouse and click drop a piece of food for the food oriented group to seek out. The player can place one piece of food every quarter of a second.
+- The player can influence the position of all the fish. The avoidant fish tend to congregate in the corners of the screen furthest from the school, but if you place a lot of food in that corner, then the school will work its way over there and the avoidant fish will flee. The hungry fish interaction is pretty obvious.
 
 ## Avoidant
 
