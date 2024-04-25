@@ -11,7 +11,7 @@ _REPLACE OR REMOVE EVERYTING BETWEEN "\_"_
 
 ## Simulation Design
 
-My simulation contains a few kinds of fish that all interact with each other and their environment. One fish will seek out food until it's satisfied (then start when it gets hungry again). The hungry fish will starve if they go too long without food. Another type will school together and get food if it's nearby (otherwise the hungry ones will get it first). And a third type avoids all other fish, but especially the center of the school. 
+My simulation contains a few kinds of fish that all interact with each other and their environment. One fish will seek out food until it's satisfied (then start when it gets hungry again). The hungry fish will starve if they go too long without food. Another type will school together and get food if it's nearby (otherwise the hungry ones will get it first). And a third type avoids all other fish, but especially the center of the school. The simulation spawns 30 fish in random positions, each with an equal chance to be each type. In testing, I have never come across a run that completely lacks a single type, but it is theoretically possible, except in the case of the hungry fish.
 
 ### Controls
 
@@ -59,11 +59,13 @@ These fish just wanna eat. The longer they go without eating, the stronger their
 - Fish sprites: [https://agdawkwardgamedev.itch.io/free-fish-assets](https://agdawkwardgamedev.itch.io/free-fish-assets)
 - Rocks: [https://freegameassets.blogspot.com/2013/09/asteroids-and-planets-if-you-needed-to.html](https://freegameassets.blogspot.com/2013/09/asteroids-and-planets-if-you-needed-to.html)
 - Food (I thought the cheese was funny): [https://freegameassets.blogspot.com/2013/08/blog-post_30.html](https://freegameassets.blogspot.com/2013/08/blog-post_30.html)
+- Background: [https://olgas-lab.itch.io/underwater-background](https://olgas-lab.itch.io/underwater-background)
 
 ## Make it Your Own
 
 - The hungry fish will die if they go too long without eating. This typically takes 2-3 minutes. The food weight starts at 1 and gains 0.05 to 0.15 every second. When it reaches 15, the fish will starve. However, since it's closer to starving, it will move much, *much* faster whenever food is placed. When the fish eats, the food weight goes back to 0 since the fish won't want to seek out more food while it's full, and it'll start gaining 0.05 to 0.15 per second again.
 - Since hungry fish can die, they can also reproduce. Every time one eats, there's a 10% chance that a new hungry fish spawns in the spot that the food was in. Yes, that means asexual reproduction for a fish. Just go with it.
+- In order to ensure that the hungry fish doesn't go extinct, one will spawn randomly if there aren't any in the tank. If you let them all die, that's on you, but you can take advantage of the random cloning chance to replenish their population by feeding them well.
 
 ## Known Issues
 
