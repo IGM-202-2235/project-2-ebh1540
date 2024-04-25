@@ -7,7 +7,7 @@
 
 ## Simulation Design
 
-My simulation contains a few kinds of fish that all interact with each other and their environment. One fish will seek out food until it's satisfied (then start when it gets hungry again). The hungry fish will starve if they go too long without food. Another type will school together and get food if it's nearby (otherwise the hungry ones will get it first). And a third type avoids all other fish, but especially the center of the school. The simulation spawns 30 fish in random positions, each with an equal chance to be each type. In testing, I have never come across a run that completely lacks a single type, but it is theoretically possible, except in the case of the hungry fish.
+My simulation contains a few kinds of fish that all interact with each other and their environment. One fish will seek out food until it's satisfied (then start when it gets hungry again). The hungry fish will starve if they go too long without food. Another type will school together and get food if it's nearby (otherwise the hungry ones will get it first). And a third type avoids all other fish, but especially the center of the school. The simulation spawns 25 fish. It initially spawns one of each kind of fish so they're guaranteed to appear, then spawns them at a 40/40/20 rate, with the avoidant type being the odd one out.
 
 ### Controls
 
