@@ -154,15 +154,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 354201a3684c5294f89b78ea8c178855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodMotivatedPref: {fileID: 2615441540035310991, guid: 78f0994fa1723fb44b85a1acc1a8bfbb, type: 3}
+  hungryPref: {fileID: 2615441540035310991, guid: 78f0994fa1723fb44b85a1acc1a8bfbb, type: 3}
+  schoolingPref: {fileID: 4929601650754755259, guid: a62a91860e6628a4897df13eeb7ea6f2, type: 3}
+  avoidantPref: {fileID: 4798347752020251436, guid: 37f78dbb868ae6f4ba76212315b89dfd, type: 3}
   obstaclePref: {fileID: 1963295192562796218, guid: f79692f47e76456449c6c36e7f794eb8, type: 3}
   foodPref: {fileID: 6642733340268099833, guid: 423ecf061ebacac4b90e67d44ca4533b, type: 3}
   minRocks: 4
   maxRocks: 7
-  spawnCount: 10
+  spawnCount: 30
   obstacles: []
   agents: []
   foodMotivateds: []
+  hungries: []
+  schoolings: []
+  avoidants: []
   foodList: []
 --- !u!4 &533256630
 Transform:

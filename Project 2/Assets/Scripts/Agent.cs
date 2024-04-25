@@ -7,6 +7,8 @@ using Random = UnityEngine.Random;
 public abstract class Agent : MonoBehaviour
 {
 
+    AgentManager agentManager;
+
     [SerializeField]
     protected PhysicsObject physicsObject;
 
@@ -29,6 +31,7 @@ public abstract class Agent : MonoBehaviour
     {
         radius = gameObject.GetComponent<SpriteRenderer>().bounds.extents.x;
         foundObstaclePositions.Clear();
+        agentManager = AgentManager.Instance;
     }
 
     // Update is called once per frame
@@ -119,15 +122,48 @@ public abstract class Agent : MonoBehaviour
 
     }
 
-    public Vector3 Separate(){
-        List<Agent> agents = AgentManager.Instance.agents;
+    public Vector3 SeparateFoodFixated(){
+        List<Hungry> agents = agentManager.hungries;
         Vector3 steeringForce = Vector3.zero;
 
         for(int i = 0; i < agents.Count; i++){
             Agent agent = agents[i];
             if(agent != this){
                 Vector3 distance = agent.transform.position - transform.position;
-                Vector3 separateForce = Flee(agent.transform.position) * (1 / distance.magnitude);
+                Vector3 separateForce = Flee(agent.transform.position) * (1 / (float) Math.Pow(2, distance.magnitude - 2));
+                steeringForce += separateForce;
+                // Debug.Log("Sep force: " + separateForce);
+            }
+        }
+        return steeringForce;
+
+    }
+
+    public Vector3 SeparateSchooling(){
+        List<Schooling> agents = agentManager.schoolings;
+        Vector3 steeringForce = Vector3.zero;
+
+        for(int i = 0; i < agents.Count; i++){
+            Agent agent = agents[i];
+            if(agent != this){
+                Vector3 distance = agent.transform.position - transform.position;
+                Vector3 separateForce = Flee(agent.transform.position) * (1 / (float) Math.Pow(2, distance.magnitude - 2));
+                steeringForce += separateForce;
+                // Debug.Log("Sep force: " + separateForce);
+            }
+        }
+        return steeringForce;
+    }
+
+    public Vector3 Separate(){
+        List<Agent> agents = agentManager.agents;
+        Vector3 steeringForce = Vector3.zero;
+
+        for(int i = 0; i < agents.Count; i++){
+            Agent agent = agents[i];
+            if(agent != this){
+                Vector3 distance = agent.transform.position - transform.position;
+                Vector3 separateForce = Flee(agent.transform.position) * (1 / (float) Math.Pow(2, distance.magnitude - 2));
                 steeringForce += separateForce;
                 // Debug.Log("Sep force: " + separateForce);
             }
@@ -140,7 +176,7 @@ public abstract class Agent : MonoBehaviour
         foundObstaclePositions.Clear();
         float forwardDot, rightDot;
         Vector3 vToO = Vector3.zero;
-        foreach(Obstacle obstacle in AgentManager.Instance.obstacles){
+        foreach(Obstacle obstacle in agentManager.obstacles){
             vToO = obstacle.transform.position - transform.position;
             forwardDot = Vector3.Dot(physicsObject.Direction, vToO);
             float length = Vector3.Distance(transform.position, GetFuturePosition(futureTime)) + physicsObject.radius;
@@ -169,7 +205,7 @@ public abstract class Agent : MonoBehaviour
 
     public Vector3 SeekFood(){
         Vector3 steeringForce = Vector3.zero;
-        foreach(Food food in AgentManager.Instance.foodList){
+        foreach(Food food in agentManager.foodList){
             steeringForce += Seek(food.transform.position) / (food.transform.position - transform.position).magnitude;
         }
 
@@ -178,9 +214,9 @@ public abstract class Agent : MonoBehaviour
 
     public Vector3 SeekClosestFood(){
         Vector3 steeringForce = Vector3.zero;
-        if(AgentManager.Instance.foodList.Count > 0){
+        if(agentManager.foodList.Count > 0){
             Food toSeek = AgentManager.Instance.foodList[0];
-            float minDistance = 1000f;
+            float minDistance = 1000f; // it should never get this high anyway
             foreach(Food food in AgentManager.Instance.foodList){
                 Vector3 fishToFood = food.transform.position - transform.position;
                 if(fishToFood.magnitude < minDistance){
@@ -194,8 +230,16 @@ public abstract class Agent : MonoBehaviour
         return steeringForce;
     }
 
+    public Vector3 Cohere(){
+        return Seek(agentManager.SchoolingPoint);
+    }
 
-    private void OnDrawGizmos(){
+    public Vector3 FleeSchooling(){
+        return Flee(agentManager.SchoolingPoint);
+    }
+
+
+    /*private void OnDrawGizmos(){
         Gizmos.color = Color.green;
 
         Gizmos.DrawSphere(transform.position, radius);
@@ -216,6 +260,6 @@ public abstract class Agent : MonoBehaviour
         Gizmos.matrix = transform.localToWorldMatrix;
         Gizmos.DrawWireCube(boxCenter, boxSize);
         Gizmos.matrix = Matrix4x4.identity;
-    }
+    }*/
 
 }

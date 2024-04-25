@@ -17,9 +17,14 @@ public class Food : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        foreach(FoodMotivated fish in AgentManager.Instance.foodMotivateds){
+        foreach(Agent fish in AgentManager.Instance.foodMotivateds){
             if((fish.transform.position - transform.position).magnitude < (radius + fish.Radius)){
-                AgentManager.Instance.eatFood(this, fish);
+                if(fish.GetType() == typeof(Hungry)){
+                    AgentManager.Instance.EatFood(this, (Hungry) fish);
+                }
+                else{
+                    AgentManager.Instance.EatFood(this, (Schooling) fish);
+                }
                 break;
             }
         }
