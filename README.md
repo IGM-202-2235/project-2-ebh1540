@@ -1,9 +1,5 @@
 # Fish Tank Simulation
 
-[Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet)
-
-_REPLACE OR REMOVE EVERYTING BETWEEN "\_"_
-
 ### Student Info
 
 -   Name: Ethan Herbst
@@ -70,9 +66,9 @@ These fish just wanna eat. The longer they go without eating, the stronger their
 
 ## Known Issues
 
-_List any errors, lack of error checking, or specific information that I need to know to run your program_
+- None that I know of
 
 ### Requirements not completed
 
-_If you did not complete a project requirement, notate that here_
+- Everything on the rubric should be there
 
