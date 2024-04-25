@@ -24,6 +24,8 @@ Large amounts of other fish make this species nervous. It will flee the center o
 #### Steering Behaviors
 
 - Flee - the center of the school of schooling fish
+- Bounds - the fish will attempt to stay in the bounds of the screen
+- Wander - the fish will wander around while trying to avoid high traffic areas
 - Obstacles - Steers around rocks
 - Separation - All other fish, not just avoidant ones
 
@@ -35,6 +37,8 @@ The schooling fish stick together because of strength in numbers.
 
 - Cohesion - These fish will seek out the centerpoint of all of their friends
 - Seek - The school will also be a little food motivated to make their movement more dynamic, but it'll be lower priority than staying in the school
+- Bounds - the fish will attempt to stay in the bounds of the screen
+- Wander - these fish wander just to make sure the school doesn't get stuck in one spot
 - Obstacles - Steers around rocks
 - Separation - These fish separate very weakly from other schooling fish to prevent them from congealing and moving together as one
 
@@ -45,6 +49,8 @@ These fish just wanna eat. The longer they go without eating, the stronger their
 #### Steering Behaviors
 
 - Seek - The food that the player places. They only move towards the closest food to them. This force gets stronger the longer the fish has gone without eating. NOTABLY: at very high strengths, this makes the fish ignore obstacles in search of food. They're still avoiding, they're just tunnel visioned on the food.
+- Bounds - the fish will attempt to stay in the bounds of the screen
+- Wander - in the absence of food and other motivators, these fish will just wander about
 - Obstacles - Steers around rocks
 - Separation - Separate from all other hungry fish
 
