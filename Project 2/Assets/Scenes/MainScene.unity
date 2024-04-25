@@ -161,7 +161,7 @@ MonoBehaviour:
   foodPref: {fileID: 6642733340268099833, guid: 423ecf061ebacac4b90e67d44ca4533b, type: 3}
   minRocks: 4
   maxRocks: 7
-  spawnCount: 30
+  spawnCount: 25
   obstacles: []
   agents: []
   foodMotivateds: []

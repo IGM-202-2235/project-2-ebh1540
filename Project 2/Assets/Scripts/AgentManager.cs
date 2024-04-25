@@ -77,13 +77,16 @@ public class AgentManager : Singleton<AgentManager>
 
     void Spawn()
     {
-        for (int i = 0; i < spawnCount; i++)
+        SpawnHungry();
+        SpawnSchooling();
+        SpawnAvoidant();
+        for (int i = 3; i < spawnCount; i++)
         {
-            int toSpawn = Random.Range(0, AgentPrefabs.Count);
-            if(toSpawn == 0){
+            int toSpawn = Random.Range(0, 10);
+            if(toSpawn < 4){
                 SpawnHungry();
             }
-            else if(toSpawn == 1){
+            else if(toSpawn < 8){
                 SpawnSchooling();
             }
             else{
