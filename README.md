@@ -11,7 +11,7 @@ _REPLACE OR REMOVE EVERYTING BETWEEN "\_"_
 
 ## Simulation Design
 
-I plan for my simulation to be a few kinds of fish (taken from the sprites in the source). Each of them will interact differently. This is subject to change, but my current idea is for one type to avoid another, one type to seek out food (player controls), and one type to school (cohesion) though this one I think will probably need another behavior.
+My simulation contains a few kinds of fish that all interact with each other and their environment. One fish will seek out food until it's satisfied (then start when it gets hungry again). The hungry fish will starve if they go too long without food. Another type will school together and get food if it's nearby (otherwise the hungry ones will get it first). And a third type avoids all other fish, but especially the center of the school. 
 
 ### Controls
 
@@ -24,7 +24,8 @@ Large amounts of other fish make this species nervous. It will flee the center o
 #### Steering Behaviors
 
 - Flee - the center of the school of schooling fish
-- Separation - All other avoidant type fish 
+- Obstacles - Steers around rocks
+- Separation - All other fish, not just avoidant ones
 
 ## Schooling
 
@@ -34,16 +35,18 @@ The schooling fish stick together because of strength in numbers.
 
 - Cohesion - These fish will seek out the centerpoint of all of their friends
 - Seek - The school will also be a little food motivated to make their movement more dynamic, but it'll be lower priority than staying in the school
-- Separation - These fish won't separate since they'll be cohering.
+- Obstacles - Steers around rocks
+- Separation - These fish separate very weakly from other schooling fish to prevent them from congealing and moving together as one
 
-## Food Motivated
+## Hungry
 
-These fish just wanna eat.
+These fish just wanna eat. The longer they go without eating, the stronger their desire (the weight of the force) to seek out food is, and it returns to 0 when they eat before it starts growing again.
 
 #### Steering Behaviors
 
 - Seek - The food that the player places. Otherwise, this fish will just wander
-- Separation - Separate from all other food motivated fish
+- Obstacles - Steers around rocks
+- Separation - Separate from all other hungry fish
 
 ## Sources
 
@@ -53,8 +56,8 @@ These fish just wanna eat.
 
 ## Make it Your Own
 
-- I'm not entirely sure how I'll differentiate yet, but I'm hoping to add more behaviors than just the ones listed.
-- Inspired by the example in the project writeup, the food motivated fish will likely slow down the longer they've gone without eating. This could be collective or based on the actual fish, I'll have to balance how many food motivated fish spawn with how easy it is to keep them fed.
+- The hungry fish will die if they go too long without eating. This typically takes 2-3 minutes. The food weight starts at 1 and gains 0.05 to 0.15 every second. When it reaches 15, the fish will starve. However, since it's closer to starving, it will move much, *much* faster whenever food is placed.
+- Since hungry fish can die, they can also reproduce. Every time one eats, there's a 10% chance that a new hungry fish spawns in the spot that the food was in. Yes, that means asexual reproduction for a fish. Just go with it.
 
 ## Known Issues
 
