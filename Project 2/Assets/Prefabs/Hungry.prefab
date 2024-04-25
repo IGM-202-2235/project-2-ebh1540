@@ -105,7 +105,7 @@ MonoBehaviour:
   wanderWeight: 1
   boundsWeight: 3
   separateWeight: 0.8
-  obstacleWeight: 1
+  obstacleWeight: 1.5
   foodWeight: 1
   separate: 1
   sepForce: 0

@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 
 public class Hungry : Agent
 {
@@ -31,7 +33,7 @@ public class Hungry : Agent
         Vector3 boundsForce = StayInBounds();
         totalForce += boundsForce * boundsWeight;
 
-        totalForce += AvoidObstacles() * obstacleWeight;
+        totalForce += AvoidObstacles() * Math.Max(obstacleWeight, foodWeight / 2);
         
         // don't spend time calculating all the distances and vectors if we're not gonna separate
         if(separate){
