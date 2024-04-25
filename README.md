@@ -15,7 +15,7 @@ My simulation contains a few kinds of fish that all interact with each other and
 
 ### Controls
 
-- The player will be able to point with the mouse and click drop a piece of food for the food oriented group to seek out.
+- The player will be able to point with the mouse and click drop a piece of food for the food oriented group to seek out. The player can place one piece of food every quarter of a second.
 
 ## Avoidant
 
