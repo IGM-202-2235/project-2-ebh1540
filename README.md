@@ -44,7 +44,7 @@ These fish just wanna eat. The longer they go without eating, the stronger their
 
 #### Steering Behaviors
 
-- Seek - The food that the player places. Otherwise, this fish will just wander
+- Seek - The food that the player places. They only move towards the closest food to them. This force gets stronger the longer the fish has gone without eating. NOTABLY: at very high strengths, this makes the fish ignore obstacles in search of food. They're still avoiding, they're just tunnel visioned on the food.
 - Obstacles - Steers around rocks
 - Separation - Separate from all other hungry fish
 
