@@ -130,9 +130,10 @@ public abstract class Agent : MonoBehaviour
             Agent agent = agents[i];
             if(agent != this){
                 Vector3 distance = agent.transform.position - transform.position;
+                
+                // this uses powers because I wanted the separation to scale much more strongly at close distances than far ones
                 Vector3 separateForce = Flee(agent.transform.position) * (1 / (float) Math.Pow(2, distance.magnitude - 2));
                 steeringForce += separateForce;
-                // Debug.Log("Sep force: " + separateForce);
             }
         }
         return steeringForce;
@@ -147,9 +148,10 @@ public abstract class Agent : MonoBehaviour
             Agent agent = agents[i];
             if(agent != this){
                 Vector3 distance = agent.transform.position - transform.position;
+
+                // this uses powers because I wanted the separation to scale much more strongly at close distances than far ones
                 Vector3 separateForce = Flee(agent.transform.position) * (1 / (float) Math.Pow(2, distance.magnitude - 2));
                 steeringForce += separateForce;
-                // Debug.Log("Sep force: " + separateForce);
             }
         }
         return steeringForce;
@@ -163,9 +165,10 @@ public abstract class Agent : MonoBehaviour
             Agent agent = agents[i];
             if(agent != this){
                 Vector3 distance = agent.transform.position - transform.position;
+                
+                // this uses powers because I wanted the separation to scale much more strongly at close distances than far ones
                 Vector3 separateForce = Flee(agent.transform.position) * (1 / (float) Math.Pow(2, distance.magnitude - 2));
                 steeringForce += separateForce;
-                // Debug.Log("Sep force: " + separateForce);
             }
         }
         return steeringForce;
@@ -183,7 +186,6 @@ public abstract class Agent : MonoBehaviour
             if(forwardDot > 0f && forwardDot < length){
                 rightDot = Vector3.Dot(vToO, transform.right);
                 if(Math.Abs(rightDot) < radius + obstacle.radius){
-                    // Debug.Log("Obstacle found: forward dot " + forwardDot + " right dot " + rightDot);
                     foundObstaclePositions.Add(obstacle.transform.position);
                 }
             }
@@ -196,10 +198,7 @@ public abstract class Agent : MonoBehaviour
             Vector3 avoidForce = desiredVelocity - physicsObject.Velocity;
             steeringForce += avoidForce / vToO.magnitude;
         }
-
-
-
-
+        
         return steeringForce;
     }
 
