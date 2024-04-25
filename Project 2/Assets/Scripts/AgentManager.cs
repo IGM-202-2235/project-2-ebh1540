@@ -173,8 +173,8 @@ public class AgentManager : Singleton<AgentManager>
     {
         Vector2 randPoint = Vector2.zero;
 
-        randPoint.x = Random.Range(-ScreenSize.x, ScreenSize.x);
-        randPoint.y = Random.Range(-ScreenSize.y, ScreenSize.y);
+        randPoint.x = Random.Range(-ScreenSize.x * 0.8f, ScreenSize.x * 0.8f);
+        randPoint.y = Random.Range(-ScreenSize.y * 0.8f, ScreenSize.y * 0.8f);
 
         return randPoint;
     }
