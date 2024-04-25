@@ -56,7 +56,7 @@ These fish just wanna eat. The longer they go without eating, the stronger their
 
 ## Make it Your Own
 
-- The hungry fish will die if they go too long without eating. This typically takes 2-3 minutes. The food weight starts at 1 and gains 0.05 to 0.15 every second. When it reaches 15, the fish will starve. However, since it's closer to starving, it will move much, *much* faster whenever food is placed.
+- The hungry fish will die if they go too long without eating. This typically takes 2-3 minutes. The food weight starts at 1 and gains 0.05 to 0.15 every second. When it reaches 15, the fish will starve. However, since it's closer to starving, it will move much, *much* faster whenever food is placed. When the fish eats, the food weight goes back to 0 since the fish won't want to seek out more food while it's full, and it'll start gaining 0.05 to 0.15 per second again.
 - Since hungry fish can die, they can also reproduce. Every time one eats, there's a 10% chance that a new hungry fish spawns in the spot that the food was in. Yes, that means asexual reproduction for a fish. Just go with it.
 
 ## Known Issues
