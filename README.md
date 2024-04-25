@@ -36,7 +36,7 @@ The schooling fish stick together because of strength in numbers.
 #### Steering Behaviors
 
 - Cohesion - These fish will seek out the centerpoint of all of their friends
-- Seek - The school will also be a little food motivated to make their movement more dynamic, but it'll be lower priority than staying in the school
+- Seek - The school will also be a little food motivated to make their movement more dynamic, but it'll be lower priority than staying in the school. Unlike the hungry fish, their desire to eat is constant, and stays lower than what the hungry fish default to.
 - Bounds - the fish will attempt to stay in the bounds of the screen
 - Wander - these fish wander just to make sure the school doesn't get stuck in one spot
 - Obstacles - Steers around rocks
