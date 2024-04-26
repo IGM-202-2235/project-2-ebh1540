@@ -41,7 +41,7 @@ The schooling fish stick together because of strength in numbers.
 
 ## Hungry
 
-These fish just wanna eat. The longer they go without eating, the stronger their desire (the weight of the force) to seek out food is, and it returns to 0 when they eat before it starts growing again.
+These fish just wanna eat. The longer they go without eating, the stronger their desire (the weight of the force) to seek out food is, and it returns to 0 when they eat before it starts growing again. After they've eaten, they don't eat again for a short amount of time, even if they come into contact with food. This way, if two pieces of food are right next to each other, then one fish can't eat both, spreading the food around so that fish are fed more evenly.
 
 #### Steering Behaviors
 
