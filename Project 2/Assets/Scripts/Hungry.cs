@@ -16,6 +16,8 @@ public class Hungry : Agent
 
     [SerializeField]
     bool separate = true;
+
+    public float Hunger { get { return foodWeight;}}
     
     public float sepForce = 0;
     
