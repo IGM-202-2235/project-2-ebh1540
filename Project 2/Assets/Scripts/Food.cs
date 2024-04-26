@@ -20,8 +20,10 @@ public class Food : MonoBehaviour
         foreach(Agent fish in AgentManager.Instance.foodMotivateds){
             if((fish.transform.position - transform.position).magnitude < (radius + fish.Radius)){
                 // hungry fish won't eat if they're full, allowing other hungry fish to swoop in and collect food if there's two pieces very close together
-                if(fish.GetType() == typeof(Hungry) && ((Hungry) fish).Hunger > 1){ 
-                    AgentManager.Instance.EatFood(this, (Hungry) fish);
+                if(fish.GetType() == typeof(Hungry)){
+                    if(((Hungry) fish).Hunger > 1){ 
+                        AgentManager.Instance.EatFood(this, (Hungry) fish);
+                    }
                 }
                 else{
                     AgentManager.Instance.EatFood(this, (Schooling) fish);
